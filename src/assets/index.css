@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.App{
+    height: 100%;
+}
+
+.chatBus-Header {
+    text-align: center;
+    height: 5%;
+    padding: 0.5%;
+}
+
+.chatBus-Message{
+    position: absolute !important;
+    bottom: 0;
+    width: 98%;
+    margin: 1%;
+}
+
+.chatBus-MessageInput{
+    width: 90%;
+    margin-right: 2%;
+}
+
+.chatBus-sendIcon{
+    margin-left: 15%;
+}
+
+.chatBus-sendButton{
+    margin-bottom: 1% !important;
+}
