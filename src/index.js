@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/index.css';
-import App from './components/App';
+import ChatBus from './components/ChatBus';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<ChatBus />, document.getElementById('root'));
 registerServiceWorker();
