@@ -9,3 +9,12 @@ export default function sendMessage(name, message) {
     }
   }
 }
+
+export function updateUserName(name) {
+  return {
+    type: Constants.UPDATE_USER_NAME,
+    data: {
+      name
+    }
+  }
+}

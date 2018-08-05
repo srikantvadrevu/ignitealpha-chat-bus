@@ -10,12 +10,34 @@ import connect from "react-redux/es/connect/connect";
  * Component rendering Message Input field and Send Button.
  */
 function MessageInput(props) {
+
+  function sendMessage() {
+    let chatInput = document.getElementsByClassName('chatBus-messageInput')[0].getElementsByTagName('input')[0];
+    if (chatInput.value.trim() !== '') {
+      props.sendMessage(chatInput.value);
+      chatInput.value = '';
+    }
+    chatInput.focus();
+  }
+
+  function handleChatInput(event) {
+    if (event.keyCode === 13) {
+      sendMessage();
+    }
+  }
+
   return (
     <div className={'chatBus-message'}>
-      <Input placeholder={Constants.CHAT_INPUT_PLACEHOLDER} className={'chatBus-messageInput'} autoFocus/>
+      <Input
+        placeholder={Constants.CHAT_INPUT_PLACEHOLDER}
+        className={'chatBus-messageInput'}
+        autoFocus
+        onKeyUp={handleChatInput}/>
       <Button
-        onClick={() => props.sendMessage(document.getElementsByClassName('chatBus-messageInput')[0].getElementsByTagName('input')[0].value)}
-        variant="contained" color="primary" className={'chatBus-sendButton'}>
+        onClick={sendMessage}
+        variant="contained"
+        color="primary"
+        className={'chatBus-sendButton'}>
         {Constants.SEND_BUTTON_TEXT}
         <Icon className={'chatBus-sendIcon'}>send</Icon>
       </Button>
@@ -24,7 +46,7 @@ function MessageInput(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   sendMessage: (message) => {
-    dispatch(sendMessage('cheeku', message))
+    dispatch(sendMessage(Constants.YOU, message))
   }
 });
 
