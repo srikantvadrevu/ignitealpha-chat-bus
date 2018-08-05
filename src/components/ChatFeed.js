@@ -29,8 +29,8 @@ ChatFeed.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.chatBusReducers.messages
+    messages: state.chatBusState.messages
   }
 };
 
-export default connect(mapStateToProps, null)(ChatFeed);
+export default connect(mapStateToProps)(ChatFeed);

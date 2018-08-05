@@ -1,7 +1,13 @@
 {
   "name": "ignitealpha-chat-bus",
   "version": "0.1.0",
-  "private": true,
+  "description": "A chat application developed using react-redux, Google Material Design and Apache Kafka.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/srikantvadrevu/ignitealpha-chat-bus"
+  },
+  "author": "Srikant Vadrevu",
+  "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^1.4.2",
     "@material/icon-button": "^0.38.0",

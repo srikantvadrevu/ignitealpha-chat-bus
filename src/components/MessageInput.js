@@ -12,7 +12,7 @@ import connect from "react-redux/es/connect/connect";
 function MessageInput(props) {
   return (
     <div className={'chatBus-message'}>
-      <Input placeholder={Constants.CHAT_INPUT_PLACEHOLDER} className={'chatBus-messageInput'}/>
+      <Input placeholder={Constants.CHAT_INPUT_PLACEHOLDER} className={'chatBus-messageInput'} autoFocus/>
       <Button
         onClick={() => props.sendMessage(document.getElementsByClassName('chatBus-messageInput')[0].getElementsByTagName('input')[0].value)}
         variant="contained" color="primary" className={'chatBus-sendButton'}>
@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.chatBusReducers.messages
+    messages: state.chatBusState.messages
   }
 };
 
