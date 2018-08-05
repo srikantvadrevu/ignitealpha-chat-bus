@@ -8,6 +8,7 @@ import Constants from "../utils/Constants";
 import Input from "@material-ui/core/Input";
 import {updateUserName} from "../actions/actions";
 import connect from "react-redux/es/connect/connect";
+import cookie from 'react-cookies'
 
 /**
  * Component rendering name dialog box.
@@ -22,6 +23,7 @@ class NameDialogBox extends React.Component {
   handleSave = () => {
     let nameInput = document.getElementsByClassName('chatBus-nameInput')[0].getElementsByTagName('input')[0];
     this.props.updateName(nameInput.value);
+    cookie.save('chatbus-username', nameInput.value, {maxAge: 21600});
     this.setState({open: false});
   };
 

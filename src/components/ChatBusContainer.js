@@ -4,6 +4,7 @@ import Header from "./Header";
 import ChatFeed from "./ChatFeed";
 import MessageInput from "./MessageInput";
 import connect from "react-redux/es/connect/connect";
+import cookie from 'react-cookies'
 
 /**
  * Container for chatbus application. Diplays name dialog box if user hasen't entered name,
@@ -11,7 +12,7 @@ import connect from "react-redux/es/connect/connect";
  */
 function ChatBusContainer(props) {
   let content;
-  if (props.name !== '') {
+  if (cookie.load('chatbus-username')) {
     content = (
       <div>
         <Header/>
