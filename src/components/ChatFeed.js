@@ -1,28 +1,36 @@
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
 import React from "react";
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import Message from "./Message";
 
 /**
  * Component rendering live chat feed.
  */
-function ChatFeed() {
-  return (
-    <Grid container className={'chatBus-chatFeed'}>
-      <Grid item className={'chatBus-chatFeedItem'}>
-        <Card>
-          <CardContent className={'chatBus-chatFeedItemContent'}>
-            <Typography className={'chatBus-chatFeedItemName'} variant="body2" >
-              Srikant
-            </Typography>
-            <Typography className={'chatBus-chatFeedItemMessage'} variant={"body1"}>
-              Description
-            </Typography>
-          </CardContent>
-        </Card>
+class ChatFeed extends React.Component {
+  render() {
+    let messages = [];
+    let i = 0;
+    this.props.messages.forEach(function (message) {
+      messages.push(<Message key={i} name={message.name} message={message.message}/>);
+      i++;
+    });
+    return (
+      <Grid container className={'chatBus-chatFeed'}>
+        {messages}
       </Grid>
-    </Grid>);
+    );
+  }
 }
 
-export default ChatFeed;
+ChatFeed.propTypes = {
+  messages: PropTypes.array
+};
+
+const mapStateToProps = (state) => {
+  return {
+    messages: state.chatBusReducers.messages
+  }
+};
+
+export default connect(mapStateToProps, null)(ChatFeed);
