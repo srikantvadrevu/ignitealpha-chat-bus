@@ -20,14 +20,14 @@ class NameDialogBox extends React.Component {
     this.handleNameInput = this.handleNameInput.bind(this);
   }
 
-  handleSave = () => {
+  handleSave() {
     let nameInput = document.getElementsByClassName('chatBus-nameInput')[0].getElementsByTagName('input')[0];
     this.props.updateName(nameInput.value);
     cookie.save('chatbus-username', nameInput.value, {maxAge: 21600});
     this.setState({open: false});
   };
 
-  handleNameInput = (event) => {
+  handleNameInput(event) {
     if (event.keyCode === 13) {
       this.handleSave();
     }
