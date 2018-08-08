@@ -5,16 +5,27 @@ import Icon from '@material-ui/core/Icon';
 import Constants from '../utils/Constants';
 import sendMessage from "../actions/actions";
 import connect from "react-redux/es/connect/connect";
+import io from 'socket.io-client';
+import cookie from "react-cookies";
+
+const userName = cookie.load('chatbus-username');
+const socket = io('http://localhost:8000');
 
 /**
  * Component rendering Message Input field and Send Button.
  */
 function MessageInput(props) {
+  socket.on('chat', function (data) {
+    props.updateChatFeed(data.name, data.message);
+  });
 
   function sendMessage() {
     let chatInput = document.getElementsByClassName('chatBus-messageInput')[0].getElementsByTagName('input')[0];
     if (chatInput.value.trim() !== '') {
-      props.sendMessage(chatInput.value);
+      socket.emit('chat', {
+        message: chatInput.value,
+        name: userName
+      });
       chatInput.value = '';
     }
     chatInput.focus();
@@ -45,15 +56,9 @@ function MessageInput(props) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  sendMessage: (message) => {
-    dispatch(sendMessage(Constants.YOU, message))
+  updateChatFeed: (user, message) => {
+    dispatch(sendMessage(user, message))
   }
 });
 
-const mapStateToProps = (state) => {
-  return {
-    messages: state.chatBusState.messages
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MessageInput);
+export default connect(null, mapDispatchToProps)(MessageInput);
