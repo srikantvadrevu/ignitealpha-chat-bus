@@ -1,4 +1,9 @@
-export default {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
   CHAT_INPUT_PLACEHOLDER: 'Say Hi !!',
   NAME_DIALOG_TITLE: 'Enter Your Name!',
   NAME_INPUT_PLACEHOLDER: 'Cheeku..',
@@ -9,5 +14,5 @@ export default {
 
   // Actions
   SEND_MESSAGE: 'SEND_MESSAGE',
-  UPDATE_USER_NAME: 'UPDATE_USER_NAME',
+  UPDATE_USER_NAME: 'UPDATE_USER_NAME'
 };
