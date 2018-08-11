@@ -8,8 +8,7 @@ import connect from "react-redux/es/connect/connect";
 import io from 'socket.io-client';
 import cookie from "react-cookies";
 
-const userName = cookie.load('chatbus-username');
-const socket = io('http://localhost:8000');
+const socket = io('https://localhost:8000');
 
 /**
  * Component rendering Message Input field and Send Button.
@@ -24,7 +23,7 @@ function MessageInput(props) {
     if (chatInput.value.trim() !== '') {
       socket.emit('chat', {
         message: chatInput.value,
-        name: userName
+        name: cookie.load('chatbus-username')
       });
       chatInput.value = '';
     }
