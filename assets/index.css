@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.chatBus-header {
+    text-align: center;
+    height: 5%;
+    padding: 0.5%;
+}
+
+.chatBus-message {
+    position: absolute !important;
+    bottom: 0;
+    width: 98%;
+    margin: 1%;
+}
+
+.chatBus-messageInput {
+    width: 90%;
+    margin-right: 2%;
+}
+
+.chatBus-sendIcon {
+    margin-left: 15%;
+}
+
+.chatBus-sendButton {
+    margin-bottom: 1% !important;
+}
+
+.chatBus-chatFeed {
+    margin-top: 2.5%;
+    overflow-y: auto;
+    height: 81vh;
+    display: block !important;
+}
+
+.chatBus-chatFeedItem {
+    width: 100%;
+}
+
+.chatBus-chatFeedItemName {
+    width: 5%;
+    float: left;
+}
+
+.chatBus-chatFeedItemMessage {
+    width: auto;
+}
+
+.chatBus-chatFeedItemContent {
+    padding: 1% !important;
+}
